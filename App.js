@@ -3,7 +3,9 @@ import {Button, Text, StyleSheet, View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Travel from './components/travel/Travel.js'
 import Group4 from './components/Group4'
+
 
 //import  from './components/'
 
@@ -19,10 +21,11 @@ import Group4 from './components/Group4'
       <NavigationContainer>
         <Stack.Navigator>
          <Stack.Screen name="Home" component={HomeScreen}
-             options={{ title: '-Group app name-' }}/>
-
-          <Stack.Screen name="Group4" component={Group4}
-          options={{title: 'Group4'}}/>
+            options={{ title: '-Group app name-' }}/>
+         <Stack.Screen name="Travel" component={Travel}
+            options={{title: 'Travel'}}/>
+         <Stack.Screen name="Group4" component={Group4}
+            options={{title: 'Group4'}}/>
 
        </Stack.Navigator>
       </NavigationContainer>
@@ -36,25 +39,19 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="Explore Fitness"
         color="#e9967a"
-        // onPress={() =>
-        //   navigation.navigate('')
-        // }
+
       />
       <Text>  {"\n"} </Text>
       <Button
         title="Explore Reading"
         color="#b0c4de"
-        // onPress={() =>
-        //   navigation.navigate('Profile', { name: '' })
-        // }
+
       />
         <Text>  {"\n"} </Text>
       <Button
         title="Explore Pet/Family"
         color="#add8e6"
-        // onPress={() =>
-        //   navigation.navigate('')
-        // }
+
       />
         <Text>  {"\n"} </Text>
       <Button
@@ -62,6 +59,13 @@ const HomeScreen = ({ navigation }) => {
         color="#8fbc8f"
       />
         <Text>  {"\n"} </Text>
+      <Button
+        title="Explore Travel"
+        color="#add8e6"
+        onPress={() =>
+          navigation.navigate('Travel')
+        }
+      />
 
       <Button
         title="Explore Group4"
