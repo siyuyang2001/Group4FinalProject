@@ -66,7 +66,7 @@ const HomeScreen = ({ navigation }) => {
           navigation.navigate('Travel')
         }
       />
-
+        <Text>  {"\n"} </Text>
       <Button
         title="Explore Group4"
         color="#d8bfd8"
