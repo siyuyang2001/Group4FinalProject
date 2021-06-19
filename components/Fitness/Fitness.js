@@ -2,7 +2,7 @@
 
 */
 import React from 'react';
-import { EditOutlined } from '@ant-design/icons';
+// import { EditOutlined } from '@ant-design/icons';
 import { Button,
   SafeAreaView,
   StyleSheet,
@@ -12,6 +12,8 @@ import { Button,
   TouchableOpacity,} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import Abs from './Abs'
 import Back from './Back'
 import Chest from './Chest'
@@ -22,8 +24,7 @@ import SmallM from './SmallM'
 const Stack = createStackNavigator();
   const MyFitnessScreen = () => {
    return (
-     <NavigationContainer>
-       <Stack.Navigator>
+     <Tab.Navigator>
         <Stack.Screen name="Abs" component={Abs}
            options={{ title: 'Abs' }}/>
         <Stack.Screen name="Back" component={Back}
@@ -36,9 +37,8 @@ const Stack = createStackNavigator();
               options={{title: 'Record'}}/>
             <Stack.Screen name="SmallM" component={SmallM}
                options={{title: 'SmallM'}}/>
+</Tab.Navigator>
 
-      </Stack.Navigator>
-     </NavigationContainer>
    );
  };
 
@@ -88,10 +88,9 @@ const Stack = createStackNavigator();
          <Text>  {"\n"} </Text>
          <View style={styles.container}>
          <TouchableOpacity
-         <TouchableOpacity
         style={styles.buttonFacebookStyle}
         activeOpacity={0.5}>
-        <EditOutlined style = {{height: 25,  width: 35,}}/>
+        // <EditOutlined style = {{height: 25,  width: 35,}}/>
         <View style={styles.buttonIconSeparatorStyle} />
         <Button
        title="Record"

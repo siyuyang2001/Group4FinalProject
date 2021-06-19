@@ -3,8 +3,6 @@
 */
 import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
-import ListItem from './ListItem'
-
 
 export default function Abs({route,navigation}) {
   return (
