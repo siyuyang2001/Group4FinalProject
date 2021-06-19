@@ -36,10 +36,9 @@ import Group4 from './components/Group4'
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button
+      <Button 
         title="Explore Fitness"
         color="#e9967a"
-
       />
       <Text>  {"\n"} </Text>
       <Button
