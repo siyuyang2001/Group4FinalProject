@@ -42,7 +42,9 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="Explore Fitness"
         color="#e9967a"
-
+        onPress={() =>
+          navigation.navigate('Fitness')
+        }
       />
       <Text>  {"\n"} </Text>
       <Button
