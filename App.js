@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Travel from './components/travel/Travel.js'
+import Fitness from './components/Fitness/Fitness.js'
 import Group4 from './components/Group4'
 
 
@@ -24,6 +25,8 @@ import Group4 from './components/Group4'
             options={{ title: '-Group app name-' }}/>
          <Stack.Screen name="Travel" component={Travel}
             options={{title: 'Travel'}}/>
+        <Stack.Screen name="Fitness" component={Fitness}
+           options={{title: 'Fitness'}}/>
          <Stack.Screen name="Group4" component={Group4}
             options={{title: 'Group4'}}/>
 
@@ -36,9 +39,13 @@ import Group4 from './components/Group4'
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button 
+      <Button
         title="Explore Fitness"
         color="#e9967a"
+
+        onPress={() =>
+          navigation.navigate('Fitness')
+        }
       />
       <Text>  {"\n"} </Text>
       <Button
