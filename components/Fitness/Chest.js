@@ -1,14 +1,20 @@
-/*
-
-*/
-import React from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
-
+import React, { useState } from "react";
+import { Alert,
+  Modal,
+  StyleSheet,
+   Text,
+   Pressable,
+   View ,
+   Button,
+     SafeAreaView,
+     TouchableOpacity,} from "react-native";
+import Fitness_Template from './Fitness_template.js'
+     
 
 export default function Chest({route,navigation}) {
   return (
     <View>
-      <Text>Chest</Text>
+      <Fitness_Template Goal = 'Work!'/>
     </View>
   );
 }

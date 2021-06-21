@@ -9,6 +9,7 @@ import { Alert,
      SafeAreaView,
      TouchableOpacity,} from "react-native";
 
+
 const Fitness_Template = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [Goal, setGoal] = useState(props.Goal);
@@ -25,12 +26,12 @@ const Fitness_Template = (props) => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <Text style={styles.modalText}>{Goal}!</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles.textStyle}>{Goal}</Text>
+              <Text style={styles.textStyle}> Hide Goals</Text>
             </Pressable>
           </View>
         </View>
@@ -39,7 +40,7 @@ const Fitness_Template = (props) => {
         style={[styles.button, styles.buttonOpen]}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.textStyle}>Show Modal</Text>
+        <Text style={styles.textStyle}>Show Goals</Text>
       </Pressable>
     </View>
   );
@@ -89,4 +90,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default Fitness_Template;
