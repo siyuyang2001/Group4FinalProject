@@ -1,37 +1,38 @@
 
 import React from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, View,SafeAreaView} from 'react-native';
 import { Button, Icon } from 'react-native-elements'
 
 
 export default function Group4Profile({route,navigation}) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.headerText}> Group4's Profile </Text>
-      <Text style={styles.body}>Welcome to Group4!
+      <Text style={styles.body}>  {"\n"}Welcome to Group4!
       </Text>
       <Text>  {"\n"} </Text>
       <div>
-      Siyu Yang：
+    <Text style={{fontWeight: "bold"}}>   Siyu Yang：</Text>
       Cosi and econ major. Love cooking and anything related to fashion!
     <Text>  {"\n"} </Text>
       </div>
       <div>
-      YiZhe Hong
+    <Text style={{fontWeight: "bold"}}>  YiZhe Hong: </Text>
+     I am a junior majoring in Computer Science and Applied Mathematics. I will be a good programmer in the future!
     <Text>  {"\n"} </Text>
       </div>
       <div>
-      Kingsley Zhang:
+    <Text style={{fontWeight: "bold"}}>   Kingsley Zhang: </Text>
       Rising senior majoring in CS, Econ and Applied Mathematics. I have a cat named Java.
     <Text>  {"\n"} </Text>
       </div>
       <div>
-      MinJun Song:
+    <Text style={{fontWeight: "bold"}}>   MinJun Song: </Text>
       Cosi and econ major, rising senior from Korea.
     <Text>  {"\n"} </Text>
       </div>
       <div>
-      Ruyi Cai:
+     <Text style={{fontWeight: "bold"}}> Ruyi Cai: </Text>
       I’m a junior majoring in COSI and IGS. I love reading comics and playing classical music in my free time.
 
     <Text>  {"\n"} </Text>
@@ -42,11 +43,12 @@ export default function Group4Profile({route,navigation}) {
         source=  {require('../assets/cat.png')}
         alt = "Group pic"
       />
+      Meet our group mascot Java!
 
       <Button title="Go Home"
           onPress={() => navigation.navigate('Home')} />
 
-    </View>
+    </SafeAreaView >
   );
 }
 const styles = StyleSheet.create({
@@ -63,6 +65,10 @@ const styles = StyleSheet.create({
   },
   body: {
     fontSize: 25,
+  },
+  middle:{
+    alignItems: 'center',
+      justifyContent: 'center',
   },
 
 });
