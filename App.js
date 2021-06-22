@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Travel from './components/travel/Travel.js'
 import Fitness from './components/Fitness/Fitness.js'
-import Reading from './components/Reading/ReadingList.js'
+import Reading from './components/ReadingList.js'
 import Group4 from './components/Group4'
 
 
