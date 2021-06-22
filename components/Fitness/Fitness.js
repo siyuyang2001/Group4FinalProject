@@ -65,7 +65,7 @@ const Tab = createBottomTabNavigator();
           <View style={styles.buttonIconSeparatorStyle} />
            <Button
        title="Work On Chest"
-       color='#87cefa'
+       color='#fff'
        onPress={() =>
          navigation.navigate('Chest')
        }
@@ -85,7 +85,7 @@ const Tab = createBottomTabNavigator();
           <View style={styles.buttonIconSeparatorStyle} />
            <Button
        title="Work On Back"
-       color='#f0e68c'
+       color='#fff'
        onPress={() =>
          navigation.navigate('Back')
        }
@@ -105,7 +105,7 @@ const Tab = createBottomTabNavigator();
           <View style={styles.buttonIconSeparatorStyle} />
            <Button
        title="Work On Abs"
-       color='#dda0dd'
+       color='#fff'
        onPress={() =>
          navigation.navigate('Abs')
        }
@@ -127,7 +127,7 @@ const Tab = createBottomTabNavigator();
           <View style={styles.buttonIconSeparatorStyle} />
            <Button
        title="Work on Legs"
-       color='#ffa07a'
+       color='#fff'
        onPress={() =>
          navigation.navigate('Legs')
        }
@@ -148,7 +148,7 @@ const Tab = createBottomTabNavigator();
           <View style={styles.buttonIconSeparatorStyle} />
            <Button
        title="Small Muscles"
-       color='#ffe4c4'
+       color='#fff'
        onPress={() =>
          navigation.navigate('SmallM')
        }
@@ -169,7 +169,7 @@ const Tab = createBottomTabNavigator();
           <View style={styles.buttonIconSeparatorStyle} />
            <Button
        title="Make A Record"
-       color='#485a96'
+       color='#fff'
        onPress={() =>
          navigation.navigate('Record')
        }
