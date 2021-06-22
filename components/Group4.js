@@ -34,8 +34,12 @@ export default function Group4Profile({route,navigation}) {
       <div>
      <Text style={{fontWeight: "bold"}}> Ruyi Cai: </Text>
       I’m a junior majoring in COSI and IGS. I love reading comics and playing classical music in my free time.
-
-    <Text>  {"\n"} </Text>
+     <Text>  {"\n"} </Text>
+      </div>
+      <div>
+     <Text style={{fontWeight: "bold"}}>   Richard Hu: </Text>
+      Rising junior majoring in chemistry. Love playing soccer and reading novels.
+     <Text>  {"\n"} </Text>
       </div>
 
       <Image
