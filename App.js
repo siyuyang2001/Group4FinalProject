@@ -1,4 +1,4 @@
-import * as React from 'react';
+gimport * as React from 'react';
 import {Button, Text, StyleSheet, View,SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -30,7 +30,7 @@ import Pets from './components/Pets/Pets.js'
                options={{title: 'Pets'}}/>
         <Stack.Screen name="Fitness" component={Fitness}
            options={{title: 'Fitness'}}/>
-        <Stack.Screen name="Reading" component={Fitness}
+        <Stack.Screen name="Reading" component={Reading}
            options={{title: 'Reading'}}/>
          <Stack.Screen name="Group4" component={Group4}
             options={{title: 'Group4'}}/>
