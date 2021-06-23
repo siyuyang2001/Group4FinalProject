@@ -28,7 +28,7 @@ import Group4 from './components/Group4'
             options={{title: 'Travel'}}/>
         <Stack.Screen name="Fitness" component={Fitness}
            options={{title: 'Fitness'}}/>
-        <Stack.Screen name="Reading" component={Fitness}
+        <Stack.Screen name="Reading" component={Reading}
            options={{title: 'Reading'}}/>
          <Stack.Screen name="Group4" component={Group4}
             options={{title: 'Group4'}}/>
