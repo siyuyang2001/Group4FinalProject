@@ -8,7 +8,7 @@ export default function ListItem( props ) {
       <View style={styles.container}>
         <Image
           style= {styles.image}
-          source=  {require(`../../assets/travel/${props.image}`)}
+          source=  {{uri: props.image}}
           alt = "image"
         />
 
