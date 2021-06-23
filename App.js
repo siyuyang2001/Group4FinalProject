@@ -1,4 +1,4 @@
-gimport * as React from 'react';
+import React from 'react';
 import {Button, Text, StyleSheet, View,SafeAreaView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
