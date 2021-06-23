@@ -7,7 +7,7 @@ import Travel from './components/travel/Travel.js'
 import Fitness from './components/Fitness/Fitness.js'
 import Reading from './components/ReadingList.js'
 import Group4 from './components/Group4'
-
+import Pets from './components/Pets/Pets.js'
 
 //import  from './components/'
 
@@ -26,9 +26,11 @@ import Group4 from './components/Group4'
             options={{ title: '-Group app name-' }}/>
          <Stack.Screen name="Travel" component={Travel}
             options={{title: 'Travel'}}/>
+        <Stack.Screen name="Pets" component={Pets}
+               options={{title: 'Pets'}}/>
         <Stack.Screen name="Fitness" component={Fitness}
            options={{title: 'Fitness'}}/>
-        <Stack.Screen name="Reading" component={Reading}
+        <Stack.Screen name="Reading" component={Fitness}
            options={{title: 'Reading'}}/>
          <Stack.Screen name="Group4" component={Group4}
             options={{title: 'Group4'}}/>
@@ -62,7 +64,9 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="Explore Pet/Family"
         color="#add8e6"
-
+        onPress={() =>
+           navigation.navigate('Pets')
+         }
       />
         <Text>  {"\n"} </Text>
       <Button
