@@ -150,7 +150,7 @@ const Tab = createBottomTabNavigator();
        title="Small Muscles"
        color='#fff'
        onPress={() =>
-         navigation.navigate('SmallM')
+         navigation.navigate('Small_Muscle')
        }
      />
       </TouchableOpacity>
