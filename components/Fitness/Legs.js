@@ -3,12 +3,12 @@
 */
 import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
-
+import Fitness_Template from './Fitness_template.js'
 
 export default function Legs({route,navigation}) {
   return (
     <View>
-      <Text>Legs</Text>
+      <Fitness_Template Goal = 'Squat!' part = "Legs"/>
     </View>
   );
 }

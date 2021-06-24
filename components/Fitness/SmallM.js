@@ -3,12 +3,12 @@
 */
 import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
-
+import Fitness_Template from './Fitness_template.js'
 
 export default function SmallM({route,navigation}) {
   return (
     <View>
-      <Text>SmallM</Text>
+      <Fitness_Template Goal = 'Barbell Curl.!' part = "Small Muscles"/>
     </View>
   );
 }

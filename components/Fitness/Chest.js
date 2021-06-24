@@ -9,12 +9,13 @@ import { Alert,
      SafeAreaView,
      TouchableOpacity,} from "react-native";
 import Fitness_Template from './Fitness_template.js'
-     
+
 
 export default function Chest({route,navigation}) {
   return (
     <View>
-      <Fitness_Template Goal = 'Work!'/>
+      <Fitness_Template Goal = 'Work!' part = "Chest"/>
+
     </View>
   );
 }
