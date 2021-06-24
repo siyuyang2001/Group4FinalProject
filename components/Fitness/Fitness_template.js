@@ -30,7 +30,7 @@ const Item = ({ ex, des,image }) => (
             }}
           />
           <Text style={styles.title}>
-    Short Description: {'\n'}{ex}{'\n'}</Text>
+    Short Description: {'\n'}{des}{'\n'}</Text>
   </View>
 );
 
