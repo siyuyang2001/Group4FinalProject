@@ -8,6 +8,7 @@ import Fitness from './components/Fitness/Fitness.js'
 import Reading from './components/Reading/ReadingScreen.js'
 import Group4 from './components/Group4'
 import Pets from './components/Pets/Pets.js'
+import Timeline from './components/Timeline/Timeline.js'
 
 //import  from './components/'
 
@@ -32,6 +33,8 @@ import Pets from './components/Pets/Pets.js'
            options={{title: 'Fitness'}}/>
         <Stack.Screen name="Reading" component={Reading}
            options={{title: 'Reading'}}/>
+        <Stack.Screen name="Timeline" component={Timeline}
+           options={{title: 'Timeline'}}/>
          <Stack.Screen name="Group4" component={Group4}
             options={{title: 'Group4'}}/>
 
@@ -72,6 +75,9 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="Explore TimeLine"
         color="#8fbc8f"
+        onPress={() =>
+           navigation.navigate('Timeline')
+        }
       />
         <Text>  {"\n"} </Text>
       <Button
