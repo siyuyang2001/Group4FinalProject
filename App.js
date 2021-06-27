@@ -24,7 +24,7 @@ import Timeline from './components/Timeline/Timeline.js'
       <NavigationContainer>
         <Stack.Navigator>
          <Stack.Screen name="Home" component={HomeScreen}
-            options={{ title: '-Group app name-' }}/>
+            options={{ title: 'My LifeStyle' }}/>
          <Stack.Screen name="Travel" component={Travel}
             options={{title: 'Travel'}}/>
         <Stack.Screen name="Pets" component={Pets}

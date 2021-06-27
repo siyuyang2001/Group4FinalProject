@@ -10,6 +10,7 @@ export default function Group4Profile({route,navigation}) {
       <Text style={styles.headerText}> Group4's Profile </Text>
       <Text style={styles.body}>  {"\n"}Welcome to Group4!
       </Text>
+
       <Text>  {"\n"} </Text>
       <div>
     <Text style={{fontWeight: "bold"}}>   Siyu Yang：</Text>
@@ -21,6 +22,7 @@ export default function Group4Profile({route,navigation}) {
      I am a junior majoring in Computer Science and Applied Mathematics. I will be a good programmer in the future!
     <Text>  {"\n"} </Text>
       </div>
+
       <div>
     <Text style={{fontWeight: "bold"}}>   Kingsley Zhang: </Text>
       Rising senior majoring in CS, Econ and Applied Mathematics. I have a cat named Java.
