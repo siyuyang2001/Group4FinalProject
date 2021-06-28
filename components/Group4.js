@@ -17,8 +17,7 @@ export default function Group4Profile({route,navigation}) {
         alt = "Group pic"
       />
       <Text style={styles.body}>  {"\n"}  Meet our group mascot Java!</Text>
-
-
+      <View style={{flex: 5, flexDirection: 'row'}}>
                 <Card>
                   <Card.Content>
                     <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Yizhe Hong</Title>
@@ -34,8 +33,9 @@ export default function Group4Profile({route,navigation}) {
             </Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
         </Card>
+          </View>
 
-
+  <View style={{flex: 5, flexDirection: 'row'}}>
         <Card>
           <Card.Content>
             <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Kingsley Zhang </Title>
@@ -50,6 +50,7 @@ export default function Group4Profile({route,navigation}) {
             </Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
         </Card>
+          </View>
 
         <View style={{flex: 5, flexDirection: 'row'}}>
           <Card>
@@ -60,8 +61,8 @@ export default function Group4Profile({route,navigation}) {
               <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
             </Card>
 
-        </View>
-          
+
+
         <Card>
             <Card.Content>
               <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Siyu Yang</Title>
@@ -69,7 +70,7 @@ export default function Group4Profile({route,navigation}) {
             </Card.Content>
             <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
         </Card>
-
+  </View>
 
       <Button title="Go Home"
           onPress={() => navigation.navigate('Home')} />
