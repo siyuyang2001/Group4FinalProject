@@ -100,6 +100,28 @@ useEffect(() => {getData()}
 
     setImage(pickerResult.uri);
   };
+  let TakePhoto = async () => {
+    let cameraPerm = await Permissions.askAsync(Permissions.CAMERA);
+    let cameraRollPerm = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+if (cameraPerm.granted === false || cameraRollPerm.granted === false) {
+      alert('Permission to access camera roll is required!');
+      return;
+    }
+
+
+      let pickerResult = await ImagePicker.launchCameraAsync({
+        allowsEditing: true,
+        aspect: [10, 20],
+      });
+      setImage(pickerResult.uri);
+       if (pickerResult.cancelled === true) {
+      return;
+    }
+
+
+
+
+  };
     const clearAll = async () => {
         try {
           console.log('in clearData')
@@ -179,10 +201,10 @@ const Tab = createBottomTabNavigator();
           value= "Enter the URL"
           />
       </View>
-      <View style={styles.rowContainer}>
-          <Button title="Pick a photo from your Phone" onPress={openImagePickerAsync} style={styles.button}>
+      <Button title="Pick a photo from your Phone" onPress={openImagePickerAsync} style={styles.button}>
       </Button>
-      </View>
+       <Button title="Take a Photo" onPress={TakePhoto}>
+      </Button>
       <Button
         title="add"
         onPress={
