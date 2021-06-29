@@ -12,25 +12,31 @@ import { Alert,
      TextInput,
      Image,
      ScrollView} from "react-native";
-     import AsyncStorage from '@react-native-async-storage/async-storage';
-     import { NavigationContainer } from '@react-navigation/native';
+import { Card, ListItem } from 'react-native-elements'
+import { NavigationContainer } from '@react-navigation/native';
+import { Constants } from 'expo';
+import * as Permissions from 'expo-permissions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as ImagePicker from 'expo-image-picker';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MyFitnessScreen from './Fitness'
 
+
 const Item = ({ ex, des,image }) => (
   <View style={styles.item}>
-    <Text style={styles.title}>
-    Name: {ex}{'\n'}</Text>
-    <Text style={styles.title}>
-    {image}</Text>
-    <Image
-            source={{
+  <Card style={styles.card} >
+  <Card.Title>{ex}</Card.Title>
+  <Card.Divider/>
+  <Card.Image source={{
               uri:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyxr4WjK8VgcJPX4sEW4p3GNPrCaB9EY3_DA&usqp=CAU'
+                image
             }}
-          />
-          <Text style={styles.title}>
-    Short Description: {'\n'}{des}{'\n'}</Text>
+            >
+  </Card.Image>
+  <Text>
+      {des}
+    </Text>
+</Card>
   </View>
 );
 
@@ -41,7 +47,7 @@ const Fitness_Template = (props) => {
   const [part, setepart] = useState(props.part);
   const [ex, setex] = useState("add one");
   const [des, setdes] = useState("add one");
-  const [image, setimage] = useState("link of your image");
+  const [image, setImage] = useState("link of your image");
   const [list,setlist] = React.useState([]);
 
 
@@ -76,6 +82,24 @@ useEffect(() => {getData()}
 
         }
   }
+  let openImagePickerAsync = async () => {
+    let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert('Permission to access camera roll is required!');
+      return;
+    }
+
+     let pickerResult = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        base64: true,
+        aspect: [10, 20],})
+    if (pickerResult.cancelled === true) {
+      return;
+    }
+
+    setImage(pickerResult.uri);
+  };
     const clearAll = async () => {
         try {
           console.log('in clearData')
@@ -140,20 +164,24 @@ const Tab = createBottomTabNavigator();
           />
       </View>
       <View style={styles.rowContainer}>
-        <Text>URL of image: </Text>
-        <TextInput
-          style={styles.textinput}
-          onChangeText={text => {setimage(text)}}
-          value={image.toString()}
-          />
-      </View>
-            <View style={styles.rowContainer}>
         <Text>Short Description</Text>
         <TextInput
           style={styles.textinput}
           onChangeText={text => {setdes(text)}}
           value={des.toString()}
           />
+      </View>
+      <View style={styles.rowContainer}>
+        <Text>URL of image: </Text>
+        <TextInput
+          style={styles.textinput}
+          onChangeText={text => {setImage(text)}}
+          value= "Enter the URL"
+          />
+      </View>
+      <View style={styles.rowContainer}>
+          <Button title="Pick a photo from your Phone" onPress={openImagePickerAsync} style={styles.button}>
+      </Button>
       </View>
       <Button
         title="add"
@@ -184,6 +212,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22
+  },
+  image: {
+    width: 300,
+    height: 300,
+    marginRight: 20,
+    borderRadius: 20,
+
   },
   modalView: {
     margin: 20,
