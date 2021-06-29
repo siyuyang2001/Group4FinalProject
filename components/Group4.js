@@ -23,7 +23,7 @@ export default function Group4Profile({route,navigation}) {
                     <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Yizhe Hong</Title>
                     <Paragraph>  I am a junior majoring in Computer Science and Applied Mathematics. {'\n'}I will be a good programmer in the future!</Paragraph>
                     </Card.Content>
-                    <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
+                    <Card.Cover source={require('../assets/Yizhe.png')} />
                 </Card>
 
         <Card>
@@ -31,7 +31,7 @@ export default function Group4Profile({route,navigation}) {
             <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Ruyi Cai</Title>
             <Paragraph> I’m a junior majoring in COSI and IGS. {'\n'}I love reading comics and playing classical music in my free time.</Paragraph>
             </Card.Content>
-            <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
+            <Card.Cover source={require('../assets/Ruyi.png')}  />
         </Card>
           </View>
 
@@ -41,7 +41,7 @@ export default function Group4Profile({route,navigation}) {
             <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Kingsley Zhang </Title>
             <Paragraph> Rising senior majoring in CS, Econ and applied Mathematics.{'\n'}I have a cat named Java.</Paragraph>
             </Card.Content>
-            <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
+            <Card.Cover source={require('../assets/Kingsley.png')} />
         </Card>
         <Card>
           <Card.Content>
@@ -58,17 +58,15 @@ export default function Group4Profile({route,navigation}) {
                 <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Minjun Song</Title>
                 <Paragraph>   Cosi and econ major, rising senior from Korea.</Paragraph>
               </Card.Content>
-              <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
+              <Card.Cover source={require('../assets/Minjun.png')} />
             </Card>
-
-
 
         <Card>
             <Card.Content>
               <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Siyu Yang</Title>
               <Paragraph> Rising junior with cosi and econ major.{'\n'}I Love cooking and anything related to fashion!</Paragraph>
             </Card.Content>
-            <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
+            <Card.Cover source={require('../assets/Siyu.png')}  />
         </Card>
   </View>
 
