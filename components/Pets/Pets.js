@@ -8,7 +8,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 import Food from './Food'
-
+import Profile from'./Profile'
+import WeightGraph from './WeightGraph'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,13 +86,12 @@ const HomeScreen = ({ navigation }) => {
 const ProfileScreen = ({ navigation, route }) => {
   return (
     <View>
-      <Text>This is your cat's profile</Text>
       <Image
       style={{width:200, height:200}}
       source={require('./mycat.jpg')}
       />
+      <Profile/>
     </View>
-
 );
 };
 
@@ -100,17 +100,9 @@ const WeightChart = ({ navigation, route }) => {
 
   return (
     <View>
-      <Text>Here is a graph of the cat's Weight for the last month</Text>
-      <Text>Here should be a chart of the weight of the cat of the last month which I do not konw how to do yet</Text>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'grey',
-          borderWidth: 1
-          }}
-          onChangeText={text => {setText(text)}}
-          defaultValue="Enter Weight"
-          />
+
+          <WeightGraph/>
+
       </View>
   );
 };
@@ -132,10 +124,11 @@ const App2 = ({navigation,route}) => {
         <Cat name="first shot" date="May 1st"/>
         <Cat name="Second shot" date="July 1st"/>
         <Cat name="Third shot" date="September 1st"/>
+        <Cat name="Forth shot" date="October 1st"/>
+        <Cat name="Fifth shot" date="November 1st"/>
+
       </View>
-      <Text>
-        Copyright Kaishuo Zhang 2021
-      </Text>
+
       <Button
         title="check weights"
         color="black"
@@ -172,7 +165,7 @@ const Cat = (props) => {
           borderWidth: 1
         }}
         onChangeText={text1 => {setText1(text1);setShotTaken(true)}}
-        defaultValue="Name of the shot"
+        placeholder="Name of the shot"
       />
       <TextInput
         style={{
@@ -181,7 +174,7 @@ const Cat = (props) => {
           borderWidth: 1
         }}
         onChangeText={text2 => {setText2(text2);setShotTaken(true)}}
-        defaultValue="Date of the shot"
+        placeholder="Date of the shot"
       />
     </View>
   );
