@@ -48,7 +48,7 @@ export default function Group4Profile({route,navigation}) {
             <Title style={{fontSize: 30, fontWeight: "bold",marginTop:10}}>Richard Hu</Title>
             <Paragraph>   Rising junior majoring in chemistry.{'\n'} Love playing soccer and reading novels.</Paragraph>
             </Card.Content>
-            <Card.Cover source={{ uri: 'https://picsum.photos/701' }} />
+            <Card.Cover source={require('../assets/Richard.png')} />
         </Card>
           </View>
 
