@@ -10,6 +10,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Food from './Food'
 import Profile from'./Profile'
 import WeightGraph from './WeightGraph'
+import Reminder from'./Reminder'
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -43,35 +45,47 @@ const MyPet = () => {
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Button
         title="Your kitten"
-        color="grey"
+        color="black"
+        alignItems= 'center'
         onPress={() =>
           navigation.navigate('Profile', { name: 'Jane' })
         }
       />
+      <Text>  {"\n"} </Text>
+
       <Button
-        title="Schedule"
-        color="black"
+        title="Shots Schedule"
+        color="red"
         onPress={() =>
           navigation.navigate('Schedule')
         }
       />
+      <Text>  {"\n"} </Text>
+
       <Button
-        title="Weight"
-        color="grey"
+        title="Weight Loss"
+        color="green"
         onPress={() =>
           navigation.navigate('Weight')
         }
       />
+      <Text>  {"\n"} </Text>
+
       <Button
-        title="Meal"
-        color="black"
+        title="Meal Plan"
+        color="orange"
         onPress={() =>
           navigation.navigate('Meal')
         }
       />
+      <Text>  {"\n"} </Text>
+
+      <Reminder/>
+      <Text>  {"\n"} </Text>
+
       <Button
         title="About"
         color="grey"
@@ -100,9 +114,7 @@ const WeightChart = ({ navigation, route }) => {
 
   return (
     <View>
-
           <WeightGraph/>
-
       </View>
   );
 };
@@ -128,14 +140,6 @@ const App2 = ({navigation,route}) => {
         <Cat name="Fifth shot" date="November 1st"/>
 
       </View>
-
-      <Button
-        title="check weights"
-        color="black"
-        onPress={() =>
-          navigation.navigate('Weight')
-        }
-      />
     </View>
   );
 }
@@ -184,6 +188,13 @@ const Meal = ({ navigation, route }) => {
   return (
     <View>
        <Food totalCalories={200} />
+       <Button
+         title="Go to Calories Plans"
+         color="black"
+         onPress={() =>
+           navigation.navigate('Weight')
+         }
+       />
     </View>
   );
 };
@@ -192,7 +203,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection:'column',
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
