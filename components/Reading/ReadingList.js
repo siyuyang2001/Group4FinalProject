@@ -9,6 +9,7 @@ const ReadingList = (props) => {
   const [readDate,setReadDate] = useState("")
   const [comment,setComment] = useState("")
   const [records,setRecords]= useState([])
+  const [favoriteBook, setFavoriteBook] = useState([])
 
   useEffect(() => {getData()}
            ,[])
@@ -24,12 +25,22 @@ const ReadingList = (props) => {
             console.log('just set Info, Name and Email')
           } else {
             console.log('just read a null value from Storage')
-            setInfo({})
-            setName("")
-            setEmail("")
           }
-
-
+        } catch(e) {
+          console.log("error in getData ")
+          console.dir(e)
+          // error reading value
+        }
+        try {
+            const jsonValue = await AsyncStorage.getItem('@favoriteBook')
+            let data = null
+            if (jsonValue!=null) {
+              data = JSON.parse(jsonValue)
+              setFavoriteBook(data)
+              console.log('just set Favorite Book')
+            } else {
+              console.log('just read a null value from Storage')
+            }
         } catch(e) {
           console.log("error in getData ")
           console.dir(e)
@@ -46,6 +57,17 @@ const ReadingList = (props) => {
           console.log("error in storeData ")
           console.dir(e)
           // saving error
+        }
+  }
+
+  const storeFavoriteBook = async (value) => {
+        try {
+          const jsonValue = JSON.stringify(value)
+          await AsyncStorage.setItem('@favoriteBook', jsonValue)
+          console.log('just stored '+jsonValue)
+        } catch (e) {
+          console.log("error in storeData ")
+          console.dir(e)
         }
   }
 
@@ -70,6 +92,21 @@ const ReadingList = (props) => {
           <Text> Episode # {item.episodeNum} </Text>
           <Text> -->> {item.comment} </Text>
         </Text>
+        <Button
+          title={"Add to favorite"}
+          onPress = {() => {
+            const newFavoriteBook =
+              favoriteBook.concat(
+                {'readDate':item.readDate,
+                 'readingTitle':item.readingTitle,
+                 'episodeNum': item.episodeNum,
+                 'comment':item.comment,
+                 'date':item.date
+              })
+            setFavoriteBook(newFavoriteBook)
+            storeFavoriteBook(favoriteBook)
+          }}
+        />
       </View>
     )
   }
