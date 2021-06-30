@@ -5,12 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Image, TextInput, Button, StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Stars from 'react-native-stars';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 import Food from './Food'
 import Profile from'./Profile'
 import WeightGraph from './WeightGraph'
 import Reminder from'./Reminder'
+import Rating from './Rating'
 
 
 const Stack = createStackNavigator();
@@ -39,6 +42,8 @@ const MyPet = () => {
           <Stack.Screen name="Weight" component={WeightChart} />
           <Stack.Screen name="About" component={AboutScreen} />
           <Stack.Screen name="Meal" component={Meal} />
+          <Stack.Screen name="Rate" component={Rate} />
+
         </Tab.Navigator>
   );
 };
@@ -93,7 +98,16 @@ const HomeScreen = ({ navigation }) => {
           navigation.navigate('About')
         }
       />
+      <Text>  {"\n"} </Text>
 
+      <Button
+        title="Rate the APP"
+        color="purple"
+        alignItems= 'center'
+        onPress={() =>
+          navigation.navigate('Rate')
+        }
+      />
     </View>
   );
 };
@@ -109,6 +123,43 @@ const ProfileScreen = ({ navigation, route }) => {
 );
 };
 
+const Rate = ({ navigation, route }) => {
+  const [rate, setRate] = useState(true);
+
+  return (
+    <View style={{alignItems:'center'}}>
+    <Text style={{fontSize:30}}> Rate the APP!</Text>
+    <TextInput
+      style={{
+        height: 200,
+        borderColor: 'black',
+        borderWidth: 1
+      }}
+      placeholder="Comments"
+    />
+      <Stars
+        default={2.5}
+        count={5}
+        half={true}
+        starSize={1000000000} /* must be set to the size of the custom component if in selection mode */
+        fullStar={<Icon name={'star'} style={[styles.myStarStyle]}/>}
+        emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
+        halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}/>}
+      />
+
+      <Button
+        onPress={() => {
+          setRate(false);
+        }}
+        disabled={!rate}
+        title={rate ? "submit" : "Thank you so much!"}
+        color="red"
+      />
+
+    </View>
+
+);
+};
 const WeightChart = ({ navigation, route }) => {
   const [text, setText] = useState(0);
 
@@ -212,6 +263,16 @@ const styles = StyleSheet.create({
   },
   helloText: {
     fontSize: 40,
+  },
+  myStarStyle: {
+    color: 'yellow',
+    backgroundColor: 'transparent',
+    textShadowColor: 'black',
+    textShadowOffset: {width: 1, height: 1},
+    textShadowRadius: 2,
+  },
+  myEmptyStarStyle: {
+    color: 'white',
   }
 });
 export default MyPet;
