@@ -12,7 +12,7 @@ import { Alert,
      TextInput,
      Image,
      ScrollView} from "react-native";
-import { Card, ListItem } from 'react-native-elements'
+import { Card, ListItem,SpeedDial,Icon} from 'react-native-elements'
 import { NavigationContainer } from '@react-navigation/native';
 import { Constants } from 'expo';
 import * as Permissions from 'expo-permissions';
@@ -49,6 +49,7 @@ const Fitness_Template = (props) => {
   const [des, setdes] = useState("add one");
   const [image, setImage] = useState("link of your image");
   const [list,setlist] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
 
 
 useEffect(() => {getData()}
@@ -198,14 +199,11 @@ const Tab = createBottomTabNavigator();
         <TextInput
           style={styles.textinput}
           onChangeText={text => {setImage(text)}}
-          value= "Enter the URL"
+          value= "URL"
           />
+          <Text>{'\n'}</Text>
       </View>
-      <Button title="Pick a photo from your Phone" onPress={openImagePickerAsync} style={styles.button}>
-      </Button>
-       <Button title="Take a Photo" onPress={TakePhoto}>
-      </Button>
-      <Button
+            <Button
         title="add"
         onPress={
           () => {
@@ -216,15 +214,35 @@ const Tab = createBottomTabNavigator();
           storeData(newlist)
           }}
       />
-      <Button
-        title="clear data base"
-        onPress={
+      <SpeedDial
+  isOpen={open}
+  icon={{ name: 'edit', color: '#fff' }}
+  openIcon={{ name: 'close', color: '#fff' }}
+  onOpen={() => setOpen(!open)}
+  onClose={() => setOpen(!open)}
+>
+<SpeedDial.Action
+    icon={{ name: 'circle', color: '#fff' }}
+    title="Pick Picture"
+    onPress={openImagePickerAsync}
+  />
+<SpeedDial.Action
+    icon={{ name: 'camera', color: '#fff' }}
+    title="Take Photo"
+    onPress={TakePhoto}
+  />
+  <SpeedDial.Action
+    icon={{ name: 'delete', color: '#fff' }}
+    title="Delete"
+    onPress={
           () => {
             setlist([])
             storeData([])
           }}
-      />
+  />
+</SpeedDial>
       </ScrollView>
+
     </SafeAreaView>
   );
 };
@@ -233,7 +251,7 @@ const styles = StyleSheet.create({
   centeredView: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 22,
   },
   image: {
     width: 300,
