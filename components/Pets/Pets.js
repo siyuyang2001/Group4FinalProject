@@ -139,13 +139,12 @@ const Rate = ({ navigation, route }) => {
     />
     <Text>  {"\n"} </Text>
       <Stars
-        default={2.5}
+        default={3}
         count={5}
-        half={true}
+        half={false}
         starSize={50} /* must be set to the size of the custom component if in selection mode */
         fullStar={<Icon name={'star'} style={[styles.myStarStyle]}/>}
         emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
-        halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}/>}
       />
 <Text>  {"\n"} </Text>
       <Button
