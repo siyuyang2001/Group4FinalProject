@@ -141,7 +141,7 @@ const Rate = ({ navigation, route }) => {
         default={2.5}
         count={5}
         half={true}
-        starSize={1000000000} /* must be set to the size of the custom component if in selection mode */
+        starSize={1} /* must be set to the size of the custom component if in selection mode */
         fullStar={<Icon name={'star'} style={[styles.myStarStyle]}/>}
         emptyStar={<Icon name={'star-outline'} style={[styles.myStarStyle, styles.myEmptyStarStyle]}/>}
         halfStar={<Icon name={'star-half'} style={[styles.myStarStyle]}/>}
