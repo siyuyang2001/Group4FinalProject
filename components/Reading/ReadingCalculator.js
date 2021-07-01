@@ -2,28 +2,23 @@ import React, { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 
-const ComicCalculator = (props) => {
+const ComicCalculator = () => {
   const [num, setNum] = useState(0) //number of episodes read
-  const [max, setMax] = useState(props.max) //max number of episodes
+  const [max, setMax] = useState(20) //max number of episodes
   const [rem, setRem] = useState(0) //remaining episodes for today
 
   return(
-    <View >
+    <View style={styles.container}>
       <Text style={styles.header}>
          How many episodes to read today?
       </Text>
-      <Text style={styles.subTitle}>
-         Comics are fun, but don't spend all day reading them!
+
+      <Text style={styles.generalText}>
+         Initial maximum number of episodes set for today is: {max}
       </Text>
 
-        <Text style={styles.generalText}>
-           Initial maximum number of episodes set for today is: {props.max}
-        </Text>
-
       <View style={{flexDirection: 'row'}}>
-        <Text style={styles.generalText}>
-          I have read
-        </Text>
+        <Text style={styles.generalText}> I have read </Text>
         <TextInput
             style={styles.textinput}
             placeholder="Enter here"
@@ -36,7 +31,7 @@ const ComicCalculator = (props) => {
 
       <View style={{flexDirection: 'row'}}>
         <Text style={styles.generalText}>
-          Reset max number of episodes here:
+          Set max number of episodes here:
         </Text>
         <TextInput
             style={styles.textinput}
@@ -51,7 +46,7 @@ const ComicCalculator = (props) => {
                setRem(max-num)}
         />
 
-      <Text style={styles.textinput}>I can still read  {rem} episodes today </Text>
+      <Text style={styles.header}>I can still read  {rem} episodes today </Text>
     </View>
   )
 }
@@ -66,8 +61,9 @@ const styles =  StyleSheet.create({
   },
   textInput: {
     fontSize: 20,
-    margin: 3,
-    height: 40
+    margin: 12,
+    height: 40,
+borderWidth: 1,
   },
   header: {
     fontSize:30,
