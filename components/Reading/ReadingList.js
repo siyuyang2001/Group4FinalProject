@@ -13,6 +13,8 @@ const ReadingList = (props) => {
   const [readDate,setReadDate] = useState("")
   const [comment,setComment] = useState("")
   const [records,setRecords]= useState([])
+  const [favoriteBook, setFavoriteBook] = useState([])
+
 
   useEffect(() => {getData()}
            ,[])
@@ -37,6 +39,21 @@ const ReadingList = (props) => {
           console.dir(e)
           // error reading value
         }
+        try {
+            const jsonValue = await AsyncStorage.getItem('@favoriteBook')
+            let data = null
+            if (jsonValue!=null) {
+              data = JSON.parse(jsonValue)
+              setFavoriteBook(data)
+              console.log('just set Favorite Book')
+              console.dir(data)
+            } else {
+              console.log('just read a null value from Storage')
+            }
+        } catch(e) {
+          console.log("error in getData ")
+          console.dir(e)
+        }
   }
 
   const storeData = async (value) => {
@@ -49,7 +66,18 @@ const ReadingList = (props) => {
           console.dir(e)
         }
   }
-
+  
+  const storeFavoriteBook = async (value) => {
+        try {
+          const jsonValue = JSON.stringify(value)
+          await AsyncStorage.setItem('@favoriteBook', jsonValue)
+          console.log('just stored '+jsonValue)
+        } catch (e) {
+          console.log("error in storeData ")
+          console.dir(e)
+        }
+  }
+  
   const clearAll = async () => {
         try {
           console.log('in clearData')
@@ -64,10 +92,28 @@ const ReadingList = (props) => {
   const renderReadingItem = ({item}) => {
     return (
       <Card>
+        <View style={styles.recordItems}>
         <View>
           <Text> {item.readDate} </Text>
           <Text> finished {item.readingTitle} at Episode # {item.episodeNum} </Text>
           <Text> Comment: {item.comment} </Text>
+        </View>
+        <Button
+          title={"Add to favorite"}
+          color="orange"
+          onPress = {() => {
+            const newFavoriteBook =
+              favoriteBook.concat(
+                {'readDate':item.readDate,
+                 'readingTitle':item.readingTitle,
+                 'episodeNum': item.episodeNum,
+                 'comment':item.comment,
+                 'date':item.date
+              })
+            storeFavoriteBook(newFavoriteBook)
+            setFavoriteBook(newFavoriteBook)
+          }}
+        />
         </View>
       </Card>
     )
@@ -205,6 +251,8 @@ const styles = StyleSheet.create({
     fontFamily: "Comic Sans MS",
   },
   recordItems:{
+    flexDirection:'row',
+    justifyContent:'space-between',
     border:'thin solid black',
     margin: 5,
   },
