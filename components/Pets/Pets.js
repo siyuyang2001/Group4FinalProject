@@ -9,12 +9,12 @@ import Stars from 'react-native-stars';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
+
 import Food from './Food'
 import Profile from'./Profile'
 import WeightGraph from './WeightGraph'
 import Reminder from'./Reminder'
-import Rating from './Rating'
-
+import Timer from './Timer'
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -43,6 +43,8 @@ const MyPet = () => {
           <Stack.Screen name="About" component={AboutScreen} />
           <Stack.Screen name="Meal" component={Meal} />
           <Stack.Screen name="Rate" component={Rate} />
+          <Stack.Screen name="Clock" component={Clock} />
+
 
         </Tab.Navigator>
   );
@@ -90,6 +92,15 @@ const HomeScreen = ({ navigation }) => {
 
       <Reminder/>
       <Text>  {"\n"} </Text>
+      <Button
+        title="Set a Timer"
+        color="pink"
+        alignItems= 'center'
+        onPress={() =>
+          navigation.navigate('Clock')
+        }
+      />
+      <Text>  {"\n"} </Text>
 
       <Button
         title="About"
@@ -108,16 +119,31 @@ const HomeScreen = ({ navigation }) => {
           navigation.navigate('Rate')
         }
       />
+
     </View>
   );
 };
+
+
+const Clock = ({ navigation, route }) => {
+
+  return (
+    <View>
+    <Image
+    style={{width:200, height:200}}
+    source={require('./mycat.jpg')}
+    />
+
+
+    <Timer/>
+
+    </View>
+);
+};
+
 const ProfileScreen = ({ navigation, route }) => {
   return (
     <View>
-      <Image
-      style={{width:200, height:200}}
-      source={require('./mycat.jpg')}
-      />
       <Profile/>
     </View>
 );

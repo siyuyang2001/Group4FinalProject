@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 const Food = (props)=>{
-  const [Daily, setDaily] = useState(0);
+  const [Daily, setDaily] = useState(200);
   const [Breakfast, setBreakfast] = useState(0);
   const [Lunch, setLunch] = useState(0);
   const [Dinner, setDinner] = useState(0);
