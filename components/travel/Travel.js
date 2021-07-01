@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 40,
-    color: 'blue'
+    color: 'skyblue'
   },
 
 });

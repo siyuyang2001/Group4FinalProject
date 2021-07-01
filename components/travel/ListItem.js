@@ -14,9 +14,11 @@ export default function ListItem( props ) {
 
         <View style={styles.subContainer}>
           <Text style={styles.title}> {props.title} </Text>
-          <Text style={styles.date}> {props.date} </Text>
-          <Text style={styles.location}> {props.location} </Text>
-          <Text style={styles.content}> {props.content} </Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.date}> {props.date} </Text>
+            <Text style={styles.location}> {props.location} </Text>
+            <Text style={styles.content}> {props.content} </Text>
+          </View>
         </View>
       </View>
     );
@@ -32,6 +34,9 @@ const styles = StyleSheet.create({
   },
   subContainer: {
       flexDirection: 'column',
+  },
+  textContainer: {
+    marginLeft: 6
   },
   title: {
     fontSize: 40,
@@ -49,6 +54,18 @@ const styles = StyleSheet.create({
   location: {
     marginBottom: 10,
 
-  }
+  },
+  date: {
+    fontSize: 18,
+    color: 'grey'
+  },
+  location: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  content: {
+    fontSize: 18,
+    fontFamily: "Roboto",
+  },
 
 });
