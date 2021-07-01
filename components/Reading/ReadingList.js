@@ -1,7 +1,11 @@
 import React, { useState, useEffect }  from 'react';
-import { SafeAreaView, ScrollView, View, Button,
-         FlatList, StyleSheet, Text, TextInput, StatusBar } from 'react-native';
+import { ImageBackground, SafeAreaView, ScrollView, View, Button,
+         FlatList,SectionList, StyleSheet, Text, TextInput, StatusBar } from 'react-native';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import Card from './Card'
+import Rating from './Rating'
 
 const ReadingList = (props) => {
   const [readingTitle,setReadingTitle] = useState("")
@@ -9,7 +13,6 @@ const ReadingList = (props) => {
   const [readDate,setReadDate] = useState("")
   const [comment,setComment] = useState("")
   const [records,setRecords]= useState([])
-  const [favoriteBook, setFavoriteBook] = useState([])
 
   useEffect(() => {getData()}
            ,[])
@@ -17,7 +20,7 @@ const ReadingList = (props) => {
   const getData = async () => {
         try {
           // the '@profile_info' can be any string
-          const jsonValue = await AsyncStorage.getItem('@todo_list')
+          const jsonValue = await AsyncStorage.getItem('@reading_list')
           let data = null
           if (jsonValue!=null) {
             data = JSON.parse(jsonValue)
@@ -25,22 +28,10 @@ const ReadingList = (props) => {
             console.log('just set Info, Name and Email')
           } else {
             console.log('just read a null value from Storage')
+            setInfo({})
+            setName("")
+            setEmail("")
           }
-        } catch(e) {
-          console.log("error in getData ")
-          console.dir(e)
-          // error reading value
-        }
-        try {
-            const jsonValue = await AsyncStorage.getItem('@favoriteBook')
-            let data = null
-            if (jsonValue!=null) {
-              data = JSON.parse(jsonValue)
-              setFavoriteBook(data)
-              console.log('just set Favorite Book')
-            } else {
-              console.log('just read a null value from Storage')
-            }
         } catch(e) {
           console.log("error in getData ")
           console.dir(e)
@@ -51,19 +42,7 @@ const ReadingList = (props) => {
   const storeData = async (value) => {
         try {
           const jsonValue = JSON.stringify(value)
-          await AsyncStorage.setItem('@todo_list', jsonValue)
-          console.log('just stored '+jsonValue)
-        } catch (e) {
-          console.log("error in storeData ")
-          console.dir(e)
-          // saving error
-        }
-  }
-
-  const storeFavoriteBook = async (value) => {
-        try {
-          const jsonValue = JSON.stringify(value)
-          await AsyncStorage.setItem('@favoriteBook', jsonValue)
+          await AsyncStorage.setItem('@reading_list', jsonValue)
           console.log('just stored '+jsonValue)
         } catch (e) {
           console.log("error in storeData ")
@@ -82,61 +61,26 @@ const ReadingList = (props) => {
         }
   }
 
-
   const renderReadingItem = ({item}) => {
     return (
-      <View style={styles.recordItems}>
-        <Text style={styles.records}>
+      <Card>
+        <View>
           <Text> {item.readDate} </Text>
-          <Text> finished {item.readingTitle} at </Text>
-          <Text> Episode # {item.episodeNum} </Text>
-          <Text> -->> {item.comment} </Text>
-        </Text>
-        <Button
-          title={"Add to favorite"}
-          onPress = {() => {
-            const newFavoriteBook =
-              favoriteBook.concat(
-                {'readDate':item.readDate,
-                 'readingTitle':item.readingTitle,
-                 'episodeNum': item.episodeNum,
-                 'comment':item.comment,
-                 'date':item.date
-              })
-            setFavoriteBook(newFavoriteBook)
-            storeFavoriteBook(favoriteBook)
-          }}
-        />
-      </View>
+          <Text> finished {item.readingTitle} at Episode # {item.episodeNum} </Text>
+          <Text> Comment: {item.comment} </Text>
+        </View>
+      </Card>
     )
   }
 
-  let debug=false
-  const debugView =
-    (<View>
-      <Text style={styles.headerText}>
-        DEBUGGING INFO
-      </Text>
-      <Text>
-         readingTitle is ({readingTitle})
-      </Text>
-      <Text>
-         readDate is ({readDate})
-      </Text>
-      <Text>
-         episodeNum is ({episodeNum})
-      </Text>
-      <Text>
-         comment is ({comment})
-      </Text>
-      <Text>
-         records is {JSON.stringify(records)}
-      </Text>
-  </View>);
-
   return (
     <View style={styles.container}>
+      <ImageBackground
+        source={{uri:'https://image.freepik.com/free-vector/winter-background-with-pastel-color-brushes-leaves_220290-42.jpg',}}
+        style={styles.image}>
       <Text style={styles.headerText}> Reading List </Text>
+
+
 
       <View>
         <TextInput
@@ -182,6 +126,9 @@ const ReadingList = (props) => {
         />
       </View>
 
+
+      <ratingBar />
+
       <View>
         <Button
            title={"store"}
@@ -211,13 +158,17 @@ const ReadingList = (props) => {
           }}
          />
       </View>
-      <FlatList
-        data={records}
-        renderItem={renderReadingItem}
-        keyExtractor={item => item.date}
-      />
-      {debug?debugView: <Text>""</Text>}
+
+      <SafeAreaView>
+        <FlatList
+          data={records}
+          renderItem={renderReadingItem}
+          keyExtractor={item => item.date}
+        />
+      </SafeAreaView>
+      </ImageBackground>
     </View>
+
   );
 }
 
@@ -225,13 +176,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection:'column',
-    backgroundColor: '#F7F7C5',
-    alignItems: 'left',
-    justifyContent: 'left',
-    textAlign:'left',
-    padding:20,
   },
-  records:{
+  itemWrapper: {
+    paddingTop: 80,
+    paddingHorizontal: 20,
+  },
+  comments:{
     justifyContent:'left',
     fontSize: 10,
     fontFamily: "Comic Sans MS",
@@ -240,6 +190,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     margin: 3,
     height: 20
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
   },
   headerText: {
     textAlign:'center',
@@ -252,7 +207,7 @@ const styles = StyleSheet.create({
   recordItems:{
     border:'thin solid black',
     margin: 5,
-  }
+  },
 
 });
 
