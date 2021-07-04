@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { View, Button, Text, TextInput, StyleSheet, FlatList, SafeAreaView, ScrollView, Alert } from "react-native";
 import { SpeedDial } from 'react-native-elements'
+import FavoriteBook from './FavoriteBook'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Favorite = () => {
   const [favoriteBooks, setFavoriteBooks] = useState([])
@@ -54,19 +56,8 @@ const Favorite = () => {
 
   const renderFavoriteBooks = ({item}) => {
     return (
-      <View style={styles.favoriteItem}>
-      <Text> {item.readDate} finished {item.readingTitle} at Episode # {item.episodeNum} -->> {item.comment} </Text>
-      <Button
-        title={"Delete"}
-        color="orange"
-        onPress = {() => {
-          favoriteBooks.splice(favoriteBooks.indexOf(item), 1)
-          setFavoriteBooks(favoriteBooks)
-          storeFavoriteBook(favoriteBooks)
-
-        }}
-      />
-      </View>
+      <FavoriteBook readDate={item.readDate} readingTitle={item.readingTitle} episodeNum={item.episodeNum} comment={item.comment} favoriteBooks={favoriteBooks}
+      setFavoriteBooks={setFavoriteBooks} storeFavoriteBook={storeFavoriteBook} item={item} />
     )
   }
 
@@ -125,4 +116,5 @@ const styles = StyleSheet.create({
     marginRight: 80,
   }
 })
+
 export default Favorite
