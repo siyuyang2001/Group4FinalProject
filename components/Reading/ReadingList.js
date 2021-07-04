@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Card from './Card'
 import Rating from './Rating'
+import ReadingItem from './ReadingItem'
 
 const ReadingList = (props) => {
   const [readingTitle,setReadingTitle] = useState("")
@@ -66,7 +67,7 @@ const ReadingList = (props) => {
           console.dir(e)
         }
   }
-  
+
   const storeFavoriteBook = async (value) => {
         try {
           const jsonValue = JSON.stringify(value)
@@ -77,7 +78,7 @@ const ReadingList = (props) => {
           console.dir(e)
         }
   }
-  
+
   const clearAll = async () => {
         try {
           console.log('in clearData')
@@ -91,31 +92,8 @@ const ReadingList = (props) => {
 
   const renderReadingItem = ({item}) => {
     return (
-      <Card>
-        <View style={styles.recordItems}>
-        <View>
-          <Text> {item.readDate} </Text>
-          <Text> finished {item.readingTitle} at Episode # {item.episodeNum} </Text>
-          <Text> Comment: {item.comment} </Text>
-        </View>
-        <Button
-          title={"Add to favorite"}
-          color="orange"
-          onPress = {() => {
-            const newFavoriteBook =
-              favoriteBook.concat(
-                {'readDate':item.readDate,
-                 'readingTitle':item.readingTitle,
-                 'episodeNum': item.episodeNum,
-                 'comment':item.comment,
-                 'date':item.date
-              })
-            storeFavoriteBook(newFavoriteBook)
-            setFavoriteBook(newFavoriteBook)
-          }}
-        />
-        </View>
-      </Card>
+      <ReadingItem readDate={item.readDate} readingTitle={item.readingTitle} episodeNum={item.episodeNum} comment={item.comment} favoriteBook={favoriteBook}
+      setFavoriteBook={setFavoriteBook} storeFavoriteBook={storeFavoriteBook} item={item}/>
     )
   }
 
